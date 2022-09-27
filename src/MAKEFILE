@@ -1,0 +1,20 @@
+ROOTDIR = v:\CacheDisabler
+
+CC   = wcc
+ASM  = nasm
+LNK  = wlink
+
+MODEL = s
+
+COPT = -5 -ecd -wx -d0
+AOPT = -f obj
+
+cachedis.exe: main.obj cachelib.obj
+    $(LNK) @main.lnk
+    
+main.obj:
+    $(CC) $(COPT) main.c
+
+cachelib.obj:
+	$(ASM) cachelib.asm $(AOPT) -o cachelib.obj
+
